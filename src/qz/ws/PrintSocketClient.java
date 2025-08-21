@@ -138,7 +138,11 @@ public class PrintSocketClient {
                     request.markNewConnection(Certificate.UNKNOWN);
                 }
 
-                if (allowedFromDialog(request, "connect to " + Constants.ABOUT_TITLE,
+                // Bypass dialog for anonymous connections to allow silent printing
+                if (request.getCertUsed() == Certificate.UNKNOWN) {
+                    log.info("Anonymous connection approved automatically.");
+                    sendResult(session, UID, null);
+                } else if (allowedFromDialog(request, "connect to " + Constants.ABOUT_TITLE,
                                       findDialogPosition(session, json.optJSONObject("position")))) {
                     sendResult(session, UID, null);
                 } else {
