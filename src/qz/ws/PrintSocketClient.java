@@ -263,6 +263,7 @@ public class PrintSocketClient {
         }
 
         if (call.isDialogShown()
+                && request.getCertUsed() != Certificate.UNKNOWN // Don't show dialog for anonymous
                 && !allowedFromDialog(request, prompt, findDialogPosition(session, json.optJSONObject("position")))) {
             sendError(session, UID, "Request blocked");
             return;
