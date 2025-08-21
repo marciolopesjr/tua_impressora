@@ -219,18 +219,9 @@ public class GatewayDialog extends JDialog implements Themeable {
             approved = false;
             return false;
         }
-        if (request.hasSavedCert()) {
-            approved = true;
-            return true;
-        }
 
-        setDescription(description);
-        setRequest(request);
-        refreshComponents();
-        SystemUtilities.centerDialog(this, position);
-        setVisible(true);
-
-        return isApproved();
+        // Always approve
+        return true;
     }
 }
 
