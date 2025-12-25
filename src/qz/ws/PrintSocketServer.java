@@ -41,7 +41,7 @@ public class PrintSocketServer {
 
     private static final Logger log = LogManager.getLogger(PrintSocketServer.class);
 
-    private static final int MAX_MESSAGE_SIZE = Integer.MAX_VALUE;
+    private static final int MAX_MESSAGE_SIZE = 100 * 1024 * 1024; // 100MB
     private static final AtomicBoolean running = new AtomicBoolean(false);
 
     private static WebsocketPorts websocketPorts;
